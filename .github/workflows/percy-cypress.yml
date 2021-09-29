@@ -27,8 +27,9 @@ jobs:
           record: true
           parallel: true
           group: 'unilever'
-          command: "percy exec -- cypress run"
-          run: npx percy build:finalize
+          command: | 
+             "percy exec -- cypress run"
+             "npx percy build:finalize"
           
         env:
           # pass the Dashboard record key as an environment variable
