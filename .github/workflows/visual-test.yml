@@ -46,6 +46,7 @@ jobs:
           parallel: true
           group: "UI - Chrome"
           spec: ul-witelabel-visual-test/cypress/integration/*
+          command: "percy exec -- cypress run --record --parallel"
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
