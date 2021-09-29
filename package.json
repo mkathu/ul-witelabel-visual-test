@@ -1,0 +1,29 @@
+{
+  "name": "cypress-percy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "percy:cypress": "percy exec -- cypress run --headed --record --key 843429f8-12c2-4762-b44b-64f16d695e04 --browser chrome",
+    "test": "percy:cypress",
+    "percy:cypress:record": "percy exec -- cypress run --record --parallel --ci-build-id $build_num --key 843429f8-12c2-4762-b44b-64f16d695e04 --browser chrome"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkarthik87/cypress-percy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mkarthik87/cypress-percy/issues"
+  },
+  "homepage": "https://github.com/mkarthik87/cypress-percy#readme",
+  "dependencies": {
+    "cypress": "^8.4.0",
+    "scroll-to-bottomjs": "^1.1.0"
+  },
+  "devDependencies": {
+    "@percy/cli": "^1.0.0-beta.68",
+    "@percy/cypress": "^3.1.1"
+  }
+}
