@@ -8,24 +8,6 @@ jobs:
   install:
     runs-on: ubuntu-latest
     container: cypress/browsers:node14.17.0-chrome88-ff89
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Cypress install
-        uses: cypress-io/github-action@v2
-        with:
-          runTests: false
-      # report machine parameters
-      - run: yarn cypress info
-      - run: node -p 'os.cpus()'
-      - run: npm install --save-dev @percy/cli @percy/cypress
-          
-  ui-chrome-tests:
-    timeout-minutes: 20
-    runs-on: ubuntu-latest
-    container: cypress/browsers:node14.17.0-chrome88-ff89
-    needs: install
     strategy:
       # when one test fails, DO NOT cancel the other
       # containers, because this will kill Cypress processes
@@ -39,6 +21,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Cypress install
+        uses: cypress-io/github-action@v2
+        with:
+          runTests: false
+      # report machine parameters
+      - run: yarn cypress info
+      - run: node -p 'os.cpus()'
+      - run: npm install --save-dev @percy/cli @percy/cypress
+       
       - name: "UI Tests - Chrome"
         uses: cypress-io/github-action@v2
         with:
@@ -48,6 +39,7 @@ jobs:
           group: "UI - Chrome"
           spec: ul-witelabel-visual-test/cypress/integration/*
           command: "percy exec -- cypress run --record --parallel"
+      
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
