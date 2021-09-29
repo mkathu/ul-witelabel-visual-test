@@ -1,9 +1,9 @@
 name: Visual Tests
 
 on:
-  push:
-    branches-ignore:
-      - "feature/**"
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+   
 jobs:
   install:
     runs-on: ubuntu-latest
