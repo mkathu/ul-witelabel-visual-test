@@ -1,4 +1,4 @@
-name: Cypress parallel tests
+name: Percy Cypress parallel tests
 on:
   workflow_dispatch:
 jobs:
