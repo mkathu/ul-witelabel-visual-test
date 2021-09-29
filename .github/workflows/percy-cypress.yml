@@ -19,10 +19,15 @@ jobs:
         uses: actions/checkout@v1.0.0
       - name: Install
         run: yarn
-      - name: Percy Test
-        uses: percy/exec-action@v0.3.1
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
         with:
-          command: "percy exec -- cypress run --parallel --record --group unilever"
+          browser: chrome
+          headless: false
+          record: true
+          parallel: true
+          group: 'unilever'
+          command: "percy exec -- cypress run"
           run: npx percy build:finalize
           
         env:
