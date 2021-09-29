@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cypress": "cypress run",
+    "percy-cy": "percy exec -- cypress run",
     "percy:cypress": "percy exec -- cypress run --headed --record --key 843429f8-12c2-4762-b44b-64f16d695e04 --browser chrome",
     "test": "percy:cypress",
     "percy:cypress:record": "percy exec -- cypress run --record --parallel --ci-build-id $build_num --key 843429f8-12c2-4762-b44b-64f16d695e04 --browser chrome"
