@@ -14,4 +14,4 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          command: "npm run cypress"
+          command: "npm run cypress --headed"
