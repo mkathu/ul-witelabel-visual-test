@@ -18,16 +18,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
+      - name: Percy Test
+        uses: percy/exec-action@v0.1.2
         with:
           browser: chrome
           headless: false
           record: true
           parallel: true
           group: 'unilever'
-          run: npm rebuild
-          command: "percy exec --npx"
+          command: "cypress run"
         env:
           # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
