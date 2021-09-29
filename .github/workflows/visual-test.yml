@@ -31,8 +31,7 @@ jobs:
           if-no-files-found: error
           path: build
           
-          
-ui-chrome-tests:
+  ui-chrome-tests:
     timeout-minutes: 20
     runs-on: ubuntu-latest
     container: cypress/browsers:node14.17.0-chrome88-ff89
