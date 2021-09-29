@@ -20,6 +20,9 @@ jobs:
 
       - name: Percy Test
         uses: percy/exec-action@v0.1.2
+        
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
         with:
           browser: chrome
           headless: false
