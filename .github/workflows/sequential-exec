@@ -1,6 +1,7 @@
 name: Cypress sequential Tests
 
-on: [push]
+on:
+  workflow_dispatch:
 
 jobs:
   cypress-run:
