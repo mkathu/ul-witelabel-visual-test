@@ -19,6 +19,7 @@ jobs:
       # report machine parameters
       - run: yarn cypress info
       - run: node -p 'os.cpus()'
+      - run: npm install --save-dev
           
   ui-chrome-tests:
     timeout-minutes: 20
@@ -46,7 +47,7 @@ jobs:
           parallel: true
           group: "UI - Chrome"
           spec: ul-witelabel-visual-test/cypress/integration/*
-          command: "percy exec -- cypress run --record --parallel"
+          command: "npm run percy exec -- cypress run --record --parallel"
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
