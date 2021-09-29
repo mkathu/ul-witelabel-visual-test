@@ -21,9 +21,7 @@ jobs:
       - name: Percy Test
         uses: percy/exec-action@v0.3.1
         with:
-          command: "cypress run"
-          parallel: true
-          record: true
+          custom-command: "percy exec -- cypress run --parallel --record"
           
         env:
           # pass the Dashboard record key as an environment variable
