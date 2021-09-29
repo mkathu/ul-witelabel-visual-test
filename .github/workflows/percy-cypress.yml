@@ -23,6 +23,7 @@ jobs:
         uses: percy/exec-action@v0.3.1
         with:
           command: "percy exec -- cypress run --parallel --record --group unilever"
+          run: npx percy build:finalize
           
         env:
           # pass the Dashboard record key as an environment variable
