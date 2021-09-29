@@ -1,4 +1,4 @@
-name: Cypress tests
+name: Cypress execute specific spec
 on:
   workflow_dispatch:
 jobs:
