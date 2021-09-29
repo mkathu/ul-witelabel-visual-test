@@ -19,13 +19,6 @@ jobs:
       # report machine parameters
       - run: yarn cypress info
       - run: node -p 'os.cpus()'
-
-      - name: Save build folder
-        uses: actions/upload-artifact@v2
-        with:
-          name: build
-          if-no-files-found: error
-          path: build
           
   ui-chrome-tests:
     timeout-minutes: 20
@@ -44,12 +37,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Download the build folders
-        uses: actions/download-artifact@v2
-        with:
-          name: build
-          path: build
 
       - name: "UI Tests - Chrome"
         uses: cypress-io/github-action@v2
