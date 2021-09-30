@@ -30,10 +30,6 @@ jobs:
           parallel: true
           group: 'unilever'
           command-prefix: 'percy exec -- npx'
-      
-      - name: Percy Test
-        uses: percy/exec-action@v0.3.1
-        with:
           command: 'percy finalize --all'
           
         env:
