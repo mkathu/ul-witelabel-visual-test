@@ -23,7 +23,6 @@ jobs:
           node-version: '12.x'
       - name: Cypress run
         uses: cypress-io/github-action@v2
-      - uses: percy/exec-action@v0.3.1
         with:
           browser: chrome
           headless: false
@@ -31,6 +30,8 @@ jobs:
           parallel: true
           group: 'unilever'
           command-prefix: 'percy exec -- npx'
+      - uses: percy/exec-action@v0.3.1
+        with:
           command: 'percy build:finalize'
        
         env:
