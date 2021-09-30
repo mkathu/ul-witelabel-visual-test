@@ -22,15 +22,14 @@ jobs:
         with:
           node-version: '12.x'
       - name: Cypress run
-        uses: percy/exec-action@v0.3.1
+        uses: cypress-io/github-action@v2
         with:
           browser: chrome
           headless: false
           record: true
           parallel: true
           group: 'unilever'
-          command: 'parallel'
-          run: 'percy finalize --all'
+          command-prefix: 'percy exec -- npx --parallel'
         env:
         # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -39,6 +38,27 @@ jobs:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
           #PERCY_PARALLEL_TOTAL: -1
           #PERCY_PARALLEL_NONCE: '${{ github.event_name }}-${{ github.sha }}'
+          PERCY_TARGET_BRANCH: 'develop'
+          PERCY_BRANCH: ${{ github.head_ref }}
+          COMMIT_INFO_BRANCH: ${{ github.head_ref }}
+    
+       
+  finalize-percy-build:
+      name: finalize build
+      needs: cypress-run
+      runs-on: ubuntu-latest
+      steps:
+       - name: finalize
+         uses: percy/exec-action@v0.3.1
+         with:
+           command: 'percy finalize --all'
+         env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # pass GitHub token to allow accurately detecting a build vs a re-run build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          PERCY_PARALLEL_NONCE: '${{ github.event_name }}-${{ github.sha }}'
           PERCY_TARGET_BRANCH: 'develop'
           PERCY_BRANCH: ${{ github.head_ref }}
           COMMIT_INFO_BRANCH: ${{ github.head_ref }}
