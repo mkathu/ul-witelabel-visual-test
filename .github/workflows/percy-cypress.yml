@@ -29,7 +29,7 @@ jobs:
           record: true
           parallel: true
           group: 'unilever'
-          command: '-- npx --parallel'
+          command: 'parallel'
           run: 'percy finalize --all'
         env:
         # pass the Dashboard record key as an environment variable
