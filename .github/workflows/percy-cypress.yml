@@ -51,7 +51,7 @@ jobs:
        - name: finalize
          uses: percy/exec-action@v0.3.1
          with:
-           command: 'percy build:finalize'
+           command: 'percy finalize'
          env:
           # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
