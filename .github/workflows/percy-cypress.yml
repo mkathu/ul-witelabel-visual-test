@@ -21,6 +21,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '12.x'
+          command: npm install
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
