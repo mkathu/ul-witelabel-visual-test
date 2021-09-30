@@ -21,14 +21,10 @@
   "homepage": "https://github.com/mkarthik87/cypress-percy#readme",
   "dependencies": {
     "cypress": "^8.4.0",
-    "scroll-to-bottomjs": "^1.1.0",
-    "@cypress/code-coverage": "^3.8.1",
-    "@percy/core": "^1.0.0-beta.44",
-     "@percy/sdk-utils": "^1.0.0-beta.44"
+    "scroll-to-bottomjs": "^1.1.0"
   },
   "devDependencies": {
     "@percy/cli": "^1.0.0-beta.68",
     "@percy/cypress": "^3.1.1"
-    
   }
 }
