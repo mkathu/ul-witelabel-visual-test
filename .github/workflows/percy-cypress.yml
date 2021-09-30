@@ -36,8 +36,8 @@ jobs:
           # pass GitHub token to allow accurately detecting a build vs a re-run build
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          PERCY_PARALLEL_TOTAL: -1
-          PERCY_PARALLEL_NONCE: '${{ github.event_name }}-${{ github.sha }}'
+          #PERCY_PARALLEL_TOTAL: 2
+          #PERCY_PARALLEL_NONCE: '${{ github.event_name }}-${{ github.sha }}'
           PERCY_TARGET_BRANCH: 'develop'
           PERCY_BRANCH: ${{ github.head_ref }}
           COMMIT_INFO_BRANCH: ${{ github.head_ref }}
@@ -51,14 +51,14 @@ jobs:
        - name: finalize
          uses: percy/exec-action@v0.3.1
          with:
-           command: 'percy finalize --all'
+           command: 'percy finalize --all --verbose'
          env:
           # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           # pass GitHub token to allow accurately detecting a build vs a re-run build
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          PERCY_PARALLEL_TOTAL: 2
+          PERCY_PARALLEL_TOTAL: -1
           PERCY_PARALLEL_NONCE: '${{ github.event_name }}-${{ github.sha }}'
           PERCY_TARGET_BRANCH: 'develop'
           PERCY_BRANCH: ${{ github.head_ref }}
