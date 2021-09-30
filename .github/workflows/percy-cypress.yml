@@ -40,14 +40,19 @@ jobs:
           PERCY_PARALLEL_NONCE: '${{ github.event_name }}-${{ github.sha }}'
           PERCY_TARGET_BRANCH: 'develop'
           PERCY_BRANCH: ${{ github.head_ref }}
-          COMMIT_INFO_BRANCH: ${{ github.head_ref }} 
-          
-      - uses: percy/exec-action@v0.3.1
-        with:
-          command: 'percy build:finalize'
+          COMMIT_INFO_BRANCH: ${{ github.head_ref }}
+    
        
-        env:
-        # pass the Dashboard record key as an environment variable
+  finalize-percy-build:
+      name: finalize build
+      runs-on: ubuntu-latest
+      steps:
+       - name: finalize
+         uses: percy/exec-action@v0.3.1
+         with:
+           command: 'percy build:finalize'
+         env:
+          # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           # pass GitHub token to allow accurately detecting a build vs a re-run build
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
