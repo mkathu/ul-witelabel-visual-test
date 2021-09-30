@@ -31,7 +31,7 @@ jobs:
           parallel: true
           group: 'unilever'
           command-prefix: 'percy exec -- npx'
-          command: 'percy finalize --all'
+          command: 'percy build:finalize'
        
         env:
         # pass the Dashboard record key as an environment variable
