@@ -45,6 +45,7 @@ jobs:
   percy-finalize:
      name: finalize snapshots
      runs-on: ubuntu-latest
+     needs: cypress-run
      steps:
          - name: Checkout
            uses: percy/exec-action@v0.3.1
