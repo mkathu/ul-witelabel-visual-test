@@ -30,6 +30,12 @@ jobs:
           parallel: true
           group: 'unilever'
           command-prefix: 'percy exec -- npx'
+          
+      - name: Checkout
+        uses: percy/exec-action@v0.3.1
+        with:
+          command: 'percy finalize --all'
+       
         env:
         # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -41,29 +47,3 @@ jobs:
           PERCY_TARGET_BRANCH: 'develop'
           PERCY_BRANCH: ${{ github.head_ref }}
           COMMIT_INFO_BRANCH: ${{ github.head_ref }}
-
-  percy-finalize:
-     name: finalize snapshots
-     runs-on: ubuntu-latest
-     needs: cypress-run
-     steps:
-         - name: Checkout
-           uses: percy/exec-action@v0.3.1
-           with:
-             command: 'percy finalize --all'
-           env:
-             # pass the Dashboard record key as an environment variable
-             CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-             # pass GitHub token to allow accurately detecting a build vs a re-run build
-             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-             PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-             PERCY_PARALLEL_TOTAL: -1 
-             PERCY_PARALLEL_NONCE: '${{ github.event_name }}-${{ github.sha }}'
-             PERCY_TARGET_BRANCH: 'develop'
-             PERCY_BRANCH: ${{ github.head_ref }}
-             COMMIT_INFO_BRANCH: ${{ github.head_ref }}
-           
-       
-  
-          
-        
