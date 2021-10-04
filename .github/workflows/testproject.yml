@@ -13,5 +13,5 @@ jobs:
       # uses: wei/curl@61d92b5169ea0425820dd13cf6fbad66b483e9f1
       uses: wei/curl@v1.1.1
       with:
-        args: '-X POST https://api.testproject.io/v2/projects/MTEjcy3160WeNB2jYk4dUA/jobs/UNROJrptIE69nR4AUVwwRQ/run -H accept: application/json -H Authorization: Vu2hnTtrDxh5Y5GvyXKxWYPlzEdAHexnIvgtjdi6pOg1 -H Content-Type: application/json -d "{ "agentId": "WHtwQ1Hn4ECkoAofqsW39w", "browsers": [ "Chrome" ], "queue": true, "restartDriver": false, "testRetries": 2, "projectParameters": "", "testParameters": [], "tags": [], "capabilities": {}}"'
+        args: '-X POST https://api.testproject.io/v2/projects/MTEjcy3160WeNB2jYk4dUA/jobs/UNROJrptIE69nR4AUVwwRQ/run -H accept: application/json -H Authorization: Vu2hnTtrDxh5Y5GvyXKxWYPlzEdAHexnIvgtjdi6pOg1 -H Content-Type: application/json -d { "agentId": "WHtwQ1Hn4ECkoAofqsW39w", "browsers": [ "Chrome" ], "queue": true, "restartDriver": false, "testRetries": 2, "projectParameters": "", "testParameters": [], "tags": [], "capabilities": {}}'
         
