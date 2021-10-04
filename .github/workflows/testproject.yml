@@ -16,8 +16,6 @@ jobs:
             # The request method, basically one of GET, POST, PUT, PATCH
             method: 'POST'
             # Headers object
-            headers: '{ "Authorization": "Vu2hnTtrDxh5Y5GvyXKxWYPlzEdAHexnIvgtjdi6pOg1" }'
-            # Params object
-            params: ""
+            headers: '{"Authorization": "Vu2hnTtrDxh5Y5GvyXKxWYPlzEdAHexnIvgtjdi6pOg1"}'
             # Body object
-            body: '{"agentId": "","browsers": [],"queue": true,"restartDriver": false,"projectParameters": {},"testParameters": [],"tags": [],"capabilities": {}}'
+            body: '{"agentId": "WHtwQ1Hn4ECkoAofqsW39w","browsers": ["Chrome"],"queue": true,"restartDriver": false,"testRetries": 2,"projectParameters": "","testParameters": [],"tags": [],"capabilities": {}}'
