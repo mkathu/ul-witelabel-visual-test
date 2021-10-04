@@ -1,1 +1,44 @@
+# This workflow builds the SDK using Java 11
+name: Test Project Trigger tests
 
+on:
+  workflow_dispatch:
+  
+jobs:
+  # Build and test the SDK
+  trigger-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+ 
+    - name: Set up JDK 11
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+        
+    - name: Run TestProject Agent
+      env:
+        TP_API_KEY: ${{ secrets.TP_API_KEY }}
+      run: |
+        envsubst < .github/ci/docker-compose.yml > docker-compose.yml
+        docker-compose -f docker-compose.yml up -d
+    - name: Wait for Agent to Register
+      run: |
+        trap 'kill $(jobs -p)' EXIT
+        attempt_counter=0
+        max_attempts=45
+        mkdir -p build/reports/agent
+        docker-compose -f docker-compose.yml logs -f | tee build/reports/agent/log.txt&
+        until curl -s http://localhost:8585/api/status | jq '.registered' | grep true; do
+          if [ ${attempt_counter} -eq ${max_attempts} ]; then
+            echo "Agent failed to register. Terminating..."
+            exit 1
+          fi
+          attempt_counter=$(($attempt_counter+1))
+          sleep 1
+        done
+    - name: Run tests
+      env:
+        TP_DEV_TOKEN: ${{ secrets.TP_DEV_TOKEN }}
+        TP_AGENT_URL: http://localhost:8585
+        TP_CLOUD_URL: ${{ secrets.TP_CLOUD_URL }}
