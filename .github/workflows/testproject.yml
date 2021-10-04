@@ -14,10 +14,9 @@ jobs:
           # The target url
             url: https://api.testproject.io/v2/projects/MTEjcy3160WeNB2jYk4dUA/jobs/KXlll_Sr1EGh9mHnwFX-2w/run
             # The request method, basically one of GET, POST, PUT, PATCH
-            method: 'POST'
+            method: POST
             # Headers object
             headers: '{"Authorization": "Vu2hnTtrDxh5Y5GvyXKxWYPlzEdAHexnIvgtjdi6pOg1"}'
             accept: 'application/json'
-            Content-Type: application/json
             # Body object
             body: '{"agentId": "WHtwQ1Hn4ECkoAofqsW39w","browsers": ["Chrome"],"queue": true,"restartDriver": false,"testRetries": 2,"projectParameters": "","testParameters": [],"tags": [],"capabilities": {}}'
