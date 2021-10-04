@@ -17,5 +17,7 @@ jobs:
             method: 'POST'
             # Headers object
             headers: '{"Authorization": "Vu2hnTtrDxh5Y5GvyXKxWYPlzEdAHexnIvgtjdi6pOg1"}'
+            accept: 'application/json'
+            Content-Type: application/json
             # Body object
             body: '{"agentId": "WHtwQ1Hn4ECkoAofqsW39w","browsers": ["Chrome"],"queue": true,"restartDriver": false,"testRetries": 2,"projectParameters": "","testParameters": [],"tags": [],"capabilities": {}}'
