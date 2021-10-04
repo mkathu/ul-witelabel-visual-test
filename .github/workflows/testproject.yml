@@ -5,42 +5,21 @@ on:
   workflow_dispatch:
   
 jobs:
-  # Build and test the SDK
   trigger-tests:
     runs-on: ubuntu-latest
     steps:
         - name: Run tests via cURL AxiosJS
-        # You may pin to the exact commit or the version.
-        # uses: indiesdev/curl@60fb289d6e72261f095d7cefd578e659dd1b5182
           uses: indiesdev/curl@v1
           with:
           # The target url
-            url: ""
+            url: "https://api.testproject.io/v2/projects/MTEjcy3160WeNB2jYk4dUA/jobs/KXlll_Sr1EGh9mHnwFX-2w/run"
             # The request method, basically one of GET, POST, PUT, PATCH
-            method: ""
+            method: "POST"
             # List of status codes to be accepted, else it is considerred to be failed
             accept: ""
             # Headers object
-            headers: ""
+            headers: "Authorization=Vu2hnTtrDxh5Y5GvyXKxWYPlzEdAHexnIvgtjdi6pOg1"
             # Params object
             params: ""
             # Body object
-            body: ""
-            # timeout (millisec)
-            timeout: ""
-           # Basic authentication, format =>  username:password
-            basic-auth: ""
-            # Bearer Token
-            bearer-token: ""
-           # Proxy host, format =>  host:port
-            proxy-url: ""
-           # Proxy authentication, format =>  username:password
-            proxy-auth: ""
-           # show debug message of response
-            is_debug: ""
-           # custom config
-            custom-config: ""
-          env:
-            TP_DEV_TOKEN: ${{ secrets.TP_DEV_TOKEN }}
-            TP_AGENT_URL: http://localhost:8585
-            TP_CLOUD_URL: ${{ secrets.TP_CLOUD_URL }}
+            body: '{"agentId": "","browsers": [],"queue": true,"restartDriver": false,"projectParameters": {},"testParameters": [],"tags": [],"capabilities": {}}'
