@@ -3,20 +3,15 @@ name: Test Project Trigger tests
 
 on:
   workflow_dispatch:
-  
 jobs:
   trigger-tests:
     runs-on: ubuntu-latest
     steps:
-        - name: Run tests via cURL AxiosJS
-          uses: indiesdev/curl@v1
-          with:
-          # The target url
-            url: https://api.testproject.io/v2/projects/MTEjcy3160WeNB2jYk4dUA/jobs/KXlll_Sr1EGh9mHnwFX-2w/run
-            # The request method, basically one of GET, POST, PUT, PATCH
-            method: POST
-            # Headers object
-            headers: '{"Authorization": "Vu2hnTtrDxh5Y5GvyXKxWYPlzEdAHexnIvgtjdi6pOg1"}'
-            accept: 'application/json'
-            # Body object
-            body: '{"agentId": "WHtwQ1Hn4ECkoAofqsW39w","browsers": ["Chrome"],"queue": true,"restartDriver": false,"testRetries": 2,"projectParameters": "","testParameters": [],"tags": [],"capabilities": {}}'
+    
+    - name: Github Action for curl
+      # You may pin to the exact commit or the version.
+      # uses: wei/curl@61d92b5169ea0425820dd13cf6fbad66b483e9f1
+      uses: wei/curl@v1.1.1
+      with:
+        args: '-X POST "https://api.testproject.io/v2/projects/MTEjcy3160WeNB2jYk4dUA/jobs/UNROJrptIE69nR4AUVwwRQ/run" -H "accept: application/json" -H "Authorization: Vu2hnTtrDxh5Y5GvyXKxWYPlzEdAHexnIvgtjdi6pOg1" -H "Content-Type: application/json" -d "{ \"agentId\": \"WHtwQ1Hn4ECkoAofqsW39w\", \"browsers\": [ \"Chrome\" ], \"queue\": true, \"restartDriver\": false, \"testRetries\": 2, \"projectParameters\": \"\", \"testParameters\": [], \"tags\": [], \"capabilities\": {}}"'
+        
