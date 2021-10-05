@@ -11,3 +11,4 @@ jobs:
         with:
           urls: 'https://www.magnumicecream.com/br/home.html'
           configPath: '.github/workflows/lighthouse.json'
+          runs: 3
