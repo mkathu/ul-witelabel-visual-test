@@ -29,44 +29,44 @@ describe("visual test of whitelabel site page",function(){
 
     it("open page for visual validation for dove",function(){
      cy.visit(this.testdata.homepage)
-     cy.document().then(doc => {
-        // create a new style tag
-        let $style = doc.createElement("style");
-        // add percy-specific css
-        $style.innerHTML = "@media only percy { .productcarousel__root { display: none !important; } };";
-        // inject styles into the document
-        doc.body.appendChild($style)
-      });
+//      cy.document().then(doc => {
+//         // create a new style tag
+//         let $style = doc.createElement("style");
+//         // add percy-specific css
+//         $style.innerHTML = "@media only percy { .productcarousel__root { display: none !important; } };";
+//         // inject styles into the document
+//         doc.body.appendChild($style)
+//       });
     cy.window().then(cyWindow => scrollToBottom({frequency: 10, timing: 5000 ,remoteWindow: cyWindow }));
     cy.percySnapshot("Lazy loading homepage images");
     })
 
-    it("open product page for visual validation for dove",function(){
-        let arrayOsPage=this.testdata.productpage
-        let i=0
-        arrayOsPage.forEach(element => {
-           cy.log(i)
-            cy.visit(element)
-        cy.document().then(doc => {
-           // create a new style tag
-           let $style = doc.createElement("style");
-           // add percy-specific css
-           $style.innerHTML = "@media only percy { .productcarousel__root { display: none !important; } };";
-           // inject styles into the document
-           doc.body.appendChild($style)
-         });
-         //cy.get("*[class^='accordion']").click()
-       cy.window().then(cyWindow => scrollToBottom({frequency: 10, timing: 5000 ,remoteWindow: cyWindow }));
-         i=i+1
-         cy.log(i)
-       cy.percySnapshot("product page "+i);
-        });
-       })
-
-//        it("open lipton page for visual validation",function(){
-//         cy.visit(this.testdata.lipton)
+//     it("open product page for visual validation for dove",function(){
+//         let arrayOsPage=this.testdata.productpage
+//         let i=0
+//         arrayOsPage.forEach(element => {
+//            cy.log(i)
+//             cy.visit(element)
+//         cy.document().then(doc => {
+//            // create a new style tag
+//            let $style = doc.createElement("style");
+//            // add percy-specific css
+//            $style.innerHTML = "@media only percy { .productcarousel__root { display: none !important; } };";
+//            // inject styles into the document
+//            doc.body.appendChild($style)
+//          });
+//          //cy.get("*[class^='accordion']").click()
 //        cy.window().then(cyWindow => scrollToBottom({frequency: 10, timing: 5000 ,remoteWindow: cyWindow }));
-//        cy.percySnapshot("lipton page");
+//          i=i+1
+//          cy.log(i)
+//        cy.percySnapshot("product page "+i);
+//         });
 //        })
+
+       it("open lipton page for visual validation",function(){
+        cy.visit(this.testdata.lipton)
+       cy.window().then(cyWindow => scrollToBottom({frequency: 10, timing: 5000 ,remoteWindow: cyWindow }));
+       cy.percySnapshot("lipton page");
+       })
     
 })
