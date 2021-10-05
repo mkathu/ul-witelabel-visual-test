@@ -5,9 +5,9 @@ env:
           # pass GitHub token to allow accurately detecting a build vs a re-run build
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          PERCY_TARGET_BRANCH: 'develop'
-          PERCY_BRANCH: 'feature'
-          COMMIT_INFO_BRANCH: ${{ github.head_ref }}
+          #PERCY_TARGET_BRANCH: 'develop'
+          #PERCY_BRANCH: 'feature'
+          #COMMIT_INFO_BRANCH: ${{ github.head_ref }}
 on:
   workflow_dispatch:
 jobs:
