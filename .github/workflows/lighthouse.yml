@@ -13,3 +13,12 @@ jobs:
           configPath: '.github/workflows/lighthouse.json'
           runs: 3
           temporaryPublicStorage: true
+          
+      - uses: actions/checkout@v2
+      - name: Run Lighthouse on urls and validate with lighthouserc
+        uses: treosh/lighthouse-ci-action@v8
+        with:
+          urls: 'https://www.magnumicecream.com/br/home.html'
+          configPath: '.github/workflows/lighthouse-mobile.json'
+          runs: 3
+          temporaryPublicStorage: true
