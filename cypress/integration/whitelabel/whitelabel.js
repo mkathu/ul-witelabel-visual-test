@@ -63,9 +63,10 @@ describe("visual test of whitelabel site page",function(){
         });
        })
 
-       it("open lipton page for visual validation",function(){
-        cy.visit(this.testdata.lipton)
-       cy.window().then(cyWindow => scrollToBottom({frequency: 20, timing: 5000 ,remoteWindow: cyWindow }));
-       cy.percySnapshot("lipton page");
-       })
+//        it("open lipton page for visual validation",function(){
+//         cy.visit(this.testdata.lipton)
+//        cy.window().then(cyWindow => scrollToBottom({frequency: 10, timing: 5000 ,remoteWindow: cyWindow }));
+//        cy.percySnapshot("lipton page");
+//        })
+    
 })
