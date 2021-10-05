@@ -1,9 +1,8 @@
 {
-    "homepage": "https://www.dove.com/in/home.html",
+    "homepage": "https://www.dove.com/uk/home.html",
     "productpage": [
-        "https://www.dove.com/in/washing-and-bathing/beauty-bar/dove-pink-rosa-beauty-bathing-bar.html"
+        "https://www.dove.com/uk/washing-and-bathing/beauty-bar/pink-beauty-bar.html"
     ],
-	"tresseme": "https://www.tresemme.com.mx/home.html",
-    "knorr": "https://www.knorr.com/uk/home.html"
-
+	"tresseme": "https://www.tresemme.com/es/home.html",
+    "knorr": "https://www.knorr.com/be/nl/home.html"
 }
