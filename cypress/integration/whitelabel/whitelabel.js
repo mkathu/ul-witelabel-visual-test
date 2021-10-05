@@ -21,10 +21,10 @@ describe("visual test of whitelabel site page",function(){
         }) 
     })
 
-    it("open knorr homepage",function(){
-        cy.visit(this.testdata.knorr);
+    it("open surf homepage",function(){
+        cy.visit(this.testdata.surf);
         cy.window().then(cyWindow => scrollToBottom({frequency: 10, timing: 500 ,remoteWindow: cyWindow }));
-        cy.percySnapshot("Lazy loading knorr images");
+        cy.percySnapshot("Lazy loading surf images");
     })
 
     it("open page for visual validation for dove",function(){
@@ -63,9 +63,9 @@ describe("visual test of whitelabel site page",function(){
         });
        })
 
-       it("open tresemme page for visual validation",function(){
-        cy.visit(this.testdata.tresseme)
+       it("open lipton page for visual validation",function(){
+        cy.visit(this.testdata.lipton)
        cy.window().then(cyWindow => scrollToBottom({frequency: 20, timing: 5000 ,remoteWindow: cyWindow }));
-       cy.percySnapshot("tresemme page");
+       cy.percySnapshot("lipton page");
        })
 })
