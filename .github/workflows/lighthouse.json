@@ -1,0 +1,10 @@
+{
+  "ci": {
+    "assert": {
+      "assertions": {
+        "time-to-interactive": ["error", { "maxScore": 2 }],
+        "overall-score": ["error", { "minScore": 90 }]
+      }
+    }
+  }
+}
