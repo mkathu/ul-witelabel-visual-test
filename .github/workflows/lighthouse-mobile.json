@@ -7,8 +7,7 @@
     },
     "collect": {
       "settings": {
-        "chromeFlags": ["--disable-gpu", "--no-sandbox", "--no-zygote"],
-        "preset": "mobile"
+        "chromeFlags": ["--disable-gpu", "--no-sandbox", "--no-zygote"]
       }
     }
   }
