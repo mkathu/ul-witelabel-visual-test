@@ -15,8 +15,8 @@ jobs:
            https://www.magnumicecream.com/br/produtos/classico.html
            https://www.magnumicecream.com/br/p/cl%C3%A1ssico.html/07891075403215
            https://www.magnumicecream.com/br/campaigns/magnum-amendoas-vegano.html
-           
            https://www.magnumicecream.com/br/artigos.html
+           
           configPath: '.github/workflows/lighthouse.json'
           runs: 3
           temporaryPublicStorage: true
