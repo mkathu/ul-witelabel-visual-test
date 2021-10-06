@@ -5,6 +5,8 @@ env:
           # pass GitHub token to allow accurately detecting a build vs a re-run build
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          LOG_LEVEL: debug
+          PERCY_DEBUG: "*"
           #PERCY_TARGET_BRANCH: 'develop'
           #PERCY_BRANCH: 'feature'
           #COMMIT_INFO_BRANCH: ${{ github.head_ref }}
@@ -17,10 +19,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: set debug option
-        run: |
-          export LOG_LEVEL=debug
-          PERCY_DEBUG=*
       - uses: actions/setup-node@v2
         with:
           node-version: '12.x'
