@@ -28,4 +28,7 @@ jobs:
           record: true
           parallel: false
           spec: cypress/integration/${{ secrets.BRAND }}/*
+          run: |
+           export LOG_LEVEL=debug
+           PERCY_DEBUG=*
           command-prefix: 'percy exec -- npx'
