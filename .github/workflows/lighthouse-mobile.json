@@ -3,9 +3,7 @@
     "assert": {
       "assertions": {
         "categories:performance": ["warn", {"minScore": 0.9}],
-         "time-to-interactive": ["warn", { "maxScore":  10}],
-         "cummulative-layout-shift": ["warn", { "maxScore":  0.1}],
-         "largest-contentful-paint": ["warn", { "maxScore":  2.5}]
+         "interactive": ["warn", { "maxScore":  10}]
       }
     },
     "collect": {
