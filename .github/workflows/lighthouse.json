@@ -3,7 +3,7 @@
     "assert": {
       "assertions": {
         "categories:performance": ["warn", {"minScore": 0.9}],
-         "interactive": ["warn", { "maxScore":  0.2}]
+         "interactive": ["error", {"maxNumericValue": 2000}]
       }
     },
     "collect": {
