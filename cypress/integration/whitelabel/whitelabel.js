@@ -1,4 +1,3 @@
-
 let scrollToBottom = require("scroll-to-bottomjs");
 
 describe("visual test of whitelabel site page",function(){
@@ -21,10 +20,10 @@ describe("visual test of whitelabel site page",function(){
         }) 
     })
 
-    it("open surf homepage",function(){
-        cy.visit(this.testdata.surf);
+    it("open knorr homepage",function(){
+        cy.visit(this.testdata.knorr);
         cy.window().then(cyWindow => scrollToBottom({frequency: 10, timing: 500 ,remoteWindow: cyWindow }));
-        cy.percySnapshot("Lazy loading surf images");
+        cy.percySnapshot("Lazy loading knorr images");
     })
 
     it("open page for visual validation for dove",function(){
@@ -63,10 +62,9 @@ describe("visual test of whitelabel site page",function(){
         });
        })
 
-//        it("open lipton page for visual validation",function(){
-//         cy.visit(this.testdata.lipton)
-//        cy.window().then(cyWindow => scrollToBottom({frequency: 10, timing: 5000 ,remoteWindow: cyWindow }));
-//        cy.percySnapshot("lipton page");
-//        })
-    
-})
+       it("open tresemme page for visual validation",function(){
+        cy.visit(this.testdata.tresseme)
+       cy.window().then(cyWindow => scrollToBottom({frequency: 20, timing: 5000 ,remoteWindow: cyWindow }));
+       cy.percySnapshot("tresemme page");
+       })
+}) 
