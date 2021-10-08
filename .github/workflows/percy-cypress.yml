@@ -1,9 +1,31 @@
 name: Percy Cypress parallel tests
 on:
   workflow_dispatch:
+env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # pass GitHub token to allow accurately detecting a build vs a re-run build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          PERCY_PARALLEL_TOTAL: -1
+          PERCY_PARALLEL_NONCE: ${{ needs.nonce.outputs.result }}
+          PERCY_TARGET_BRANCH: 'develop'
+          PERCY_BRANCH: ${{ github.head_ref }}
+          COMMIT_INFO_BRANCH: ${{ github.head_ref }}
 jobs:
+  nonce:
+    runs-on: ubuntu-latest
+    # persist job results to other jobs in the workflow
+    outputs:
+      result: ${{ steps.nonce.outputs.result }}
+    steps:
+    # persist step results to other steps in the job
+    - id: nonce
+      # adding a timestamp makes the nonce more unique for re-runs
+      run: echo "::set-output name=result::${{ github.run_id }}-$(date +%s)"
   cypress-run:
     name: Cypress run
+    needs: nonce
     runs-on: ubuntu-latest
     strategy:
       # when one test fails, DO NOT cancel the other
@@ -30,17 +52,6 @@ jobs:
           parallel: true
           group: 'unilever'
           command-prefix: 'percy exec -- npx'
-        env:
-        # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          # pass GitHub token to allow accurately detecting a build vs a re-run build
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          #PERCY_PARALLEL_TOTAL: 2
-          #PERCY_PARALLEL_NONCE: '${{ github.event_name }}-${{ github.sha }}'
-          PERCY_TARGET_BRANCH: 'develop'
-          PERCY_BRANCH: ${{ github.head_ref }}
-          COMMIT_INFO_BRANCH: ${{ github.head_ref }}
     
        
   finalize-percy-build:
@@ -52,14 +63,4 @@ jobs:
          uses: percy/exec-action@v0.3.1
          with:
            command: 'percy finalize --all'
-         env:
-          # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          # pass GitHub token to allow accurately detecting a build vs a re-run build
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          PERCY_PARALLEL_TOTAL: -1
-          PERCY_PARALLEL_NONCE: '${{ github.event_name }}-${{ github.sha }}'
-          PERCY_TARGET_BRANCH: 'develop'
-          PERCY_BRANCH: ${{ github.head_ref }}
-          COMMIT_INFO_BRANCH: ${{ github.head_ref }}
+         
