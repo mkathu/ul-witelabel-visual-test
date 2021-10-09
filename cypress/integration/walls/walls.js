@@ -26,17 +26,19 @@ describe("visual test of walls site page",function(){
         arrayOsPage.forEach(element => {
            cy.log(i)
             cy.visit(element).wait(5000)
-            try{
-                cy.get('button[id="onetrust-accept-btn-handler"]').click()
+          //  try{
+            //    cy.get('button[id="onetrust-accept-btn-handler"]').then($element=>{
+                 //   $element
+                //})
                // cy.get(".c-content-panel--content+button").click({ force: true })
                 //cy.get(".c-content-panel--content").then($element=>{
                  //   $element.siblings(0).trigger('click')
                 //})
-            }
-            catch(exception)
-            {
-                console.info("msg:"+exception)
-            }
+          //  }
+           // catch(exception)
+           // {
+              //  console.info("msg:"+exception)
+           // }
            
              cy.window().then(cyWindow => scrollToBottom({frequency: 10, timing: 5000 ,remoteWindow: cyWindow }));
          i=i+1
