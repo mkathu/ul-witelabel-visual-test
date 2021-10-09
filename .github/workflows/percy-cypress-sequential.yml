@@ -8,7 +8,7 @@ env:
           LOG_LEVEL: debug
           PERCY_DEBUG: "*"
           #PERCY_TARGET_BRANCH: 'develop'
-          #PERCY_BRANCH: 'feature'
+          PERCY_BRANCH: 'walls-prod'
           #COMMIT_INFO_BRANCH: ${{ github.head_ref }}
 on:
   workflow_dispatch:
