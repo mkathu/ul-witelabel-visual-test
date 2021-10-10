@@ -22,16 +22,21 @@ describe("visual test of walls site page",function(){
 
     it("open page for visual validation for walls",function(){
         let arrayOsPage=this.testdata.wallspage
-        let i=0
+        let i=200
         arrayOsPage.forEach(element => {
            cy.log(i)
             cy.visit(element).wait(5000)
+            cy.document().then(doc => {
+                // create a new style tag
+                let $style = doc.createElement("style");
+                // add percy-specific css
+                $style.innerHTML = "@media only percy { *[id='onetrust-banner-sdk'] { display: none !important; } };";
+                // inject styles into the document
+                doc.body.appendChild($style)
+              });
             try{
                 cy.get('button[id="onetrust-accept-btn-handler"]').click()
-               // cy.get(".c-content-panel--content+button").click({ force: true })
-                //cy.get(".c-content-panel--content").then($element=>{
-                 //   $element.siblings(0).trigger('click')
-                //})
+                
             }
             catch(exception)
             {
