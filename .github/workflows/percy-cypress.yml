@@ -40,7 +40,8 @@ jobs:
           headless: false
           record: true
           parallel: true
-          group: 'unilever'
+          group: 'walls'
+          spec: cypress/integration/${{ secrets.BRAND }}/*
           command-prefix: 'percy exec -- npx'
     
        
