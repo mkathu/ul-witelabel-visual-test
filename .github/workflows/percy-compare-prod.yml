@@ -47,7 +47,7 @@ jobs:
        
   finalize-percy-build:
       name: finalize build
-      needs: cypress-run
+      needs: cypress-run-compare
       runs-on: ubuntu-latest
       steps:
        - name: finalize
