@@ -14,7 +14,7 @@ env:
           COMMIT_INFO_BRANCH: ${{ github.head_ref }}
 jobs:
 
-  cypress-run:
+  cypress-run-compare:
     name: Cypress run
     runs-on: ubuntu-latest
     strategy:
