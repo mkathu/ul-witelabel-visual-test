@@ -1,4 +1,4 @@
-name: Percy Cypress parallel tests
+name: Percy Cypress parallel tests compare against live
 on:
   workflow_dispatch:
 env:
