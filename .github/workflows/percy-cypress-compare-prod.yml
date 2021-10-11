@@ -54,4 +54,3 @@ jobs:
          uses: percy/exec-action@v0.3.1
          with:
            command: 'percy finalize --all'
-         
