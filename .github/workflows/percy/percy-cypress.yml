@@ -6,10 +6,10 @@ env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           # pass GitHub token to allow accurately detecting a build vs a re-run build
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          PERCY_TOKEN: ${{ secrets.WALLS_TOKEN }}
           PERCY_PARALLEL_TOTAL: -1
           PERCY_PARALLEL_NONCE: ${{ github.event_name }}-${{ github.sha }}
-          #PERCY_TARGET_BRANCH: 'develop'
+          #PERCY_TARGET_BRANCH: 'walls-develop'
           PERCY_BRANCH: 'walls-prod'
           COMMIT_INFO_BRANCH: ${{ github.head_ref }}
 jobs:
