@@ -15,14 +15,14 @@ describe("visual test of walls site page",function(){
 
     beforeEach(function()
     {
-        cy.fixture("/walls/walls-batch2").then((data) =>{
+        cy.fixture("/walls/prod/walls-batch1").then((data) =>{
             this.testdata=data
         }) 
     })
 
     it("open page for visual validation for walls",function(){
         let arrayOsPage=this.testdata.wallspage
-        let i=100
+        let i=0
         arrayOsPage.forEach(element => {
            cy.log(i)
             cy.visit(element).wait(5000)
@@ -34,7 +34,7 @@ describe("visual test of walls site page",function(){
                 // inject styles into the document
                 doc.body.appendChild($style)
               });
-           
+            
            
              cy.window().then(cyWindow => scrollToBottom({frequency: 10, timing: 5000 ,remoteWindow: cyWindow }));
          i=i+1

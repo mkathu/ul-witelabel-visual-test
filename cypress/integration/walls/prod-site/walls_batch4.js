@@ -15,14 +15,14 @@ describe("visual test of walls site page",function(){
 
     beforeEach(function()
     {
-        cy.fixture("/walls/walls-batch1").then((data) =>{
+        cy.fixture("/walls/prod/walls-batch4").then((data) =>{
             this.testdata=data
         }) 
     })
 
     it("open page for visual validation for walls",function(){
         let arrayOsPage=this.testdata.wallspage
-        let i=0
+        let i=300
         arrayOsPage.forEach(element => {
            cy.log(i)
             cy.visit(element).wait(5000)

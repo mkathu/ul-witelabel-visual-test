@@ -1,5 +1,5 @@
 {
-    "defaultCommandTimeout":90000,
+    "defaultCommandTimeout":99000,
     "projectId": "9xtq1p",
     "pageLoadTimeout": 120000
 }
