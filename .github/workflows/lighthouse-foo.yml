@@ -25,6 +25,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Mobile Run Lighthouse on urls and validate with lighthouserc
         uses: treosh/lighthouse-ci-action@v8
+        if: always()
         with:
           urls: |
            https://www.magnumicecream.com/br/home.html
