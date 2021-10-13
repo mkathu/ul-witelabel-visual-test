@@ -12,6 +12,10 @@ jobs:
           urls: |
            https://www.magnumicecream.com/br/home.html
            https://www.magnumicecream.com/br/produtos.html
+           https://www.magnumicecream.com/br/produtos/classico.html
+           https://www.magnumicecream.com/br/p/cl%C3%A1ssico.html/07891075403215
+           https://www.magnumicecream.com/br/campaigns/magnum-amendoas-vegano.html
+           https://www.magnumicecream.com/br/artigos.html
           configPath: '.github/workflows/lighthouse.json'
           budgetPath: .github/workflows/budget.json
           runs: 3
