@@ -4,11 +4,11 @@
     "timings": [
       {
         "metric": "interactive",
-        "budget": 10000
+        "budget": 15000
       },
       {
         "metric": "total-blocking-time",
-        "budget": 100
+        "budget": 1000
       },
       {
         "metric": "largest-contentful-paint",
