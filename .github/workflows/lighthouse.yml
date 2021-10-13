@@ -18,6 +18,7 @@ jobs:
            https://www.magnumicecream.com/br/artigos.html
            
           configPath: '.github/workflows/lighthouse.json'
+          budgetPath: .github/workflows/budget.json
           runs: 3
           temporaryPublicStorage: true
           
@@ -34,5 +35,6 @@ jobs:
            https://www.magnumicecream.com/br/artigos.html
            
           configPath: '.github/workflows/lighthouse-mobile.json'
+          budgetPath: .github/workflows/budget.json
           runs: 3
           temporaryPublicStorage: true
