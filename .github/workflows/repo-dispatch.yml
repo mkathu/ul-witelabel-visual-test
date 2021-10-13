@@ -1,4 +1,4 @@
-name: Percy parallel tests compare against live
+name: repo dispatch
 on:
   workflow_dispatch:
 jobs:
