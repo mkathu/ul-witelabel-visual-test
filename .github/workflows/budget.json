@@ -15,7 +15,7 @@
         "budget": 2500
       },
       {
-        "metric": "cumulative-layout-shift"
+        "metric": "cumulative-layout-shift",
         "budget": 0.1
       }
      ],
