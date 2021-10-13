@@ -39,3 +39,13 @@ jobs:
           budgetPath: .github/workflows/mob-budget.json
           runs: 3
           temporaryPublicStorage: true
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        if: always
+        env:
+          SLACK_CHANNEL: general
+          SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_MESSAGE: 'Post Content :rocket:'
+          SLACK_TITLE: Post Title
+          SLACK_USERNAME: rtCamp
