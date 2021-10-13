@@ -10,10 +10,23 @@ jobs:
     - name: Run Lighthouse
       uses: foo-software/lighthouse-check-action@master
       with:
+        runs: 3
         overridesJsonFile: '.github/workflows/overrides.json'
         emulatedFormFactor: all
         outputDirectory: /tmp/artifacts
         urls: 'https://www.magnumicecream.com/br/home.html,https://www.magnumicecream.com/br/produtos.html,https://www.magnumicecream.com/br/produtos/classico.html,https://www.magnumicecream.com/br/p/cl%C3%A1ssico.html/07891075403215,https://www.magnumicecream.com/br/campaigns/magnum-amendoas-vegano.html,https://www.magnumicecream.com/br/artigos.html'
+    - run: "echo ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}"
+    
+    - name: Handle Lighthouse Check results
+      uses: foo-software/lighthouse-check-status-action@master
+      with:
+          lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
+          minAccessibilityScore: "90"
+          minBestPracticesScore: "50"
+          minPerformanceScore: "50"
+          minProgressiveWebAppScore: "50"
+          minSeoScore: "50"
+          
     - name: Upload artifacts
       uses: actions/upload-artifact@master
       with:
