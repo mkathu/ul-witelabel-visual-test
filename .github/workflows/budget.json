@@ -18,8 +18,7 @@
         "metric": "cumulative-layout-shift",
         "budget": 0.1
       }
-     ],
-    ]
+     ]
   }
 ]
 
