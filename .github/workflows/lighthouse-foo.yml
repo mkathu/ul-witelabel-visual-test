@@ -1,4 +1,4 @@
-name: Lighthouse Check
+name: Lighthouse Check - foo
 on:
   workflow_dispatch:
 jobs:
