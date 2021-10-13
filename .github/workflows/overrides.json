@@ -1,14 +1,7 @@
 {
   "config": {
     "settings": {
-      "onlyCategories": ["performance","accessibility","bestPractices","performance","progressiveWebApp","seo"],
-      "onlyAudits": [
-      "first-meaningful-paint",
-      "speed-index",
-      "interactive",
-      "cumulative-layout-shift",
-      "largestContentfulPaint"
-    ]
+      "onlyAudits": ["first-meaningful-paint","speed-index","interactive","cumulative-layout-shift","largestContentfulPaint"]
     }
   },
   "options": {
