@@ -35,6 +35,6 @@ jobs:
            https://www.magnumicecream.com/br/artigos.html
            
           configPath: '.github/workflows/lighthouse-mobile.json'
-          budgetPath: .github/workflows/budget.json
+          budgetPath: .github/workflows/mob-budget.json
           runs: 3
           temporaryPublicStorage: true
