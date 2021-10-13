@@ -1,7 +1,7 @@
 {
   "config": {
     "settings": {
-      "onlyCategories": ["performance"],
+      "onlyCategories": ["performance","accessibility","bestPractices","performance","progressiveWebApp","seo"],
       "onlyAudits": [
       "first-meaningful-paint",
       "speed-index",
