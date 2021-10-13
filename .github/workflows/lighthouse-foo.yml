@@ -36,7 +36,7 @@ jobs:
           SLACK_CHANNEL: general
           SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
           SLACK_ICON: https://emoji.slack-edge.com/T23RE8G4F/lighthouse/5c41317b8ba846a5.png
-          SLACK_MESSAGE: 'Post Content :rocket'
-          SLACK_TITLE: Post Title
+          SLACK_MESSAGE: Click on the Actions url to check the point of failure and also to get the lighthouse report
+          SLACK_TITLE: Lighthouse score
           SLACK_USERNAME: mkathu
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
