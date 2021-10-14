@@ -13,5 +13,4 @@ jobs:
         with:
           configPath: '.github/workflows/${{ github.event.client_payload.brand }}.json'
           budgetPath: .github/workflows/budget.json
-          runs: ${{ github.event.client_payload.runs }}
           temporaryPublicStorage: true
