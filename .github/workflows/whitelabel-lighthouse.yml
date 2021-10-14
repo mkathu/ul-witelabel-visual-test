@@ -2,7 +2,7 @@ name: Whitelabel-Lighthouse-scan-ci
 on: 
   workflow_dispatch:
 jobs:
-  lighthouse:
+  whitelabel-lighthouse:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
