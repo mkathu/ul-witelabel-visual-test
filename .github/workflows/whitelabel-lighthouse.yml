@@ -1,4 +1,4 @@
-name: Lighthouse-scan-ci
+name: Whitelabel-Lighthouse-scan-ci
 on: 
   workflow_dispatch:
 jobs:
@@ -9,16 +9,8 @@ jobs:
       - name: Desktop Run Lighthouse on urls and validate with lighthouserc
         uses: treosh/lighthouse-ci-action@v8
         with:
-          urls: |
-           https://www.magnumicecream.com/br/home.html
-           https://www.magnumicecream.com/br/produtos.html
-           https://www.magnumicecream.com/br/produtos/classico.html
-           https://www.magnumicecream.com/br/p/cl%C3%A1ssico.html/07891075403215
-           https://www.magnumicecream.com/br/campaigns/magnum-amendoas-vegano.html
-           https://www.magnumicecream.com/br/artigos.html
-          configPath: '.github/workflows/lighthouse.json'
+          configPath: '.github/workflows/${{ secrets.PATH_OF_WHITELABEL_CONFIG_DESKTOP }}.json'
           budgetPath: .github/workflows/budget.json
-          runs: 3
           temporaryPublicStorage: true
           
       - uses: actions/checkout@v2
@@ -26,12 +18,9 @@ jobs:
         uses: treosh/lighthouse-ci-action@v8
         if: always()
         with:
-          urls: |
-           https://www.magnumicecream.com/br/home.html
-           https://www.magnumicecream.com/br/produtos.html
-          configPath: '.github/workflows/lighthouse-mobile.json'
+          
+          configPath: '.github/workflows/${{ secrets.PATH_OF_WHITELABEL_CONFIG_MOBILE }}.json'
           budgetPath: .github/workflows/mob-budget.json
-          runs: 3
           temporaryPublicStorage: true
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
@@ -40,7 +29,7 @@ jobs:
           SLACK_CHANNEL: general
           SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
           SLACK_ICON: https://emoji.slack-edge.com/T23RE8G4F/lighthouse/5c41317b8ba846a5.png
-          SLACK_MESSAGE: Click on the Actions url to check the point of failure and also to get the lighthouse report
+          SLACK_MESSAGE: Click on the ACTIONS URL to check the complete status and also to get the lighthouse report
           SLACK_TITLE: Lighthouse score
           SLACK_USERNAME: mkathu
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
