@@ -9,7 +9,7 @@ jobs:
       - name: Desktop Run Lighthouse on urls and validate with lighthouserc
         uses: treosh/lighthouse-ci-action@v8
         with:
-          configPath: '.github/workflows/${{ secrets.PATH_OF_WHITELABEL_CONFIG_DESKTOP }}.json'
+          configPath: '.github/workflows/${{ secrets.ENVIRONMENT }}/whitelabel-lighthouse-desktop.json'
           budgetPath: .github/workflows/budget.json
           temporaryPublicStorage: true
           
@@ -18,7 +18,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v8
         if: always()
         with:
-          configPath: '.github/workflows/${{ secrets.PATH_OF_WHITELABEL_CONFIG_MOBILE }}.json'
+          configPath: '.github/workflows/${{ secrets.ENVIRONMENT }}/whitelabel-lighthouse-mobile.json'
           budgetPath: .github/workflows/mob-budget.json
           temporaryPublicStorage: true
       - name: Slack Notification
@@ -29,6 +29,6 @@ jobs:
           SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
           SLACK_ICON: https://emoji.slack-edge.com/T23RE8G4F/lighthouse/5c41317b8ba846a5.png
           SLACK_MESSAGE: Click on the ACTIONS URL to check the complete status and also to get the lighthouse report
-          SLACK_TITLE: Lighthouse score
+          SLACK_TITLE: Lighthouse score of Whitelabel site
           SLACK_USERNAME: mkathu
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
