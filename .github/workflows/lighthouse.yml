@@ -9,7 +9,7 @@ jobs:
       - name: Run Lighthouse on urls and validate with lighthouserc
         uses: treosh/lighthouse-ci-action@v8
         with:
-          configPath: '.github/workflows/lighthouse.json'
+          configPath: '.github/workflows/${{ github.event.client_payload.brand }}.json'
           budgetPath: .github/workflows/budget.json
-          runs: 3
+          runs: ${{ github.event.client_payload.runs }}
           temporaryPublicStorage: true
