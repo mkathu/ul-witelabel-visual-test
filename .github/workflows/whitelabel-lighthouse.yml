@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Desktop Run Lighthouse on urls and validate with lighthouserc
+      - name: Run Lighthouse on urls for desktop
         uses: treosh/lighthouse-ci-action@v8
         with:
           configPath: '.github/workflows/${{ secrets.ENVIRONMENT }}/whitelabel-lighthouse-desktop.json'
@@ -14,14 +14,14 @@ jobs:
           temporaryPublicStorage: true
           
       - uses: actions/checkout@v2
-      - name: Mobile Run Lighthouse on urls and validate with lighthouserc
+      - name: Run Lighthouse on urls for mobile
         uses: treosh/lighthouse-ci-action@v8
         if: always()
         with:
           configPath: '.github/workflows/${{ secrets.ENVIRONMENT }}/whitelabel-lighthouse-mobile.json'
           budgetPath: .github/workflows/mob-budget.json
           temporaryPublicStorage: true
-      - name: Slack Notification
+      - name: Send Slack Notification
         uses: rtCamp/action-slack-notify@v2
         if: always()
         env:
