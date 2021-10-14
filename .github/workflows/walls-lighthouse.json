@@ -6,8 +6,8 @@
       }
     },
     "collect": {
-      "numberOfRuns": 5,
-      "url": ["home.html","products.html"],
+      "numberOfRuns": 3,
+      "url": ["https://www.streetsicecream.com.au/home.html","https://www.streetsicecream.com.au/products.html"],
       "settings": {
         "chromeFlags": ["--disable-gpu", "--no-sandbox", "--no-zygote"],
         "preset": "desktop"
