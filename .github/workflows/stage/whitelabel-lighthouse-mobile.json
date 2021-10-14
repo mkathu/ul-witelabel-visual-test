@@ -6,6 +6,8 @@
       }
     },
     "collect": {
+       "numberOfRuns": 3,
+       "url": ["https://www.magnumicecream.com/br/home.html","https://www.magnumicecream.com/br/produtos.html"],
       "settings": {
         "chromeFlags": ["--disable-gpu", "--no-sandbox", "--no-zygote"]
       }
