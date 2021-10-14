@@ -18,7 +18,6 @@ jobs:
         uses: treosh/lighthouse-ci-action@v8
         if: always()
         with:
-          
           configPath: '.github/workflows/${{ secrets.PATH_OF_WHITELABEL_CONFIG_MOBILE }}.json'
           budgetPath: .github/workflows/mob-budget.json
           temporaryPublicStorage: true
