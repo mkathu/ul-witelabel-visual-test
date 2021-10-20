@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '12.x'
-      - run: echo ${{needs.axe-scan.outputs.matrix}}
+      - run: echo ${{needs.axe-scan.outputs.matrix.ci}}
   job2:
     needs: axe-scan
     runs-on: ubuntu-latest
