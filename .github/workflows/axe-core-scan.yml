@@ -2,7 +2,7 @@ name: axe-core scan for a page
 on:
   workflow_dispatch:
 jobs:
-  axe-core-scan:
+  axe-scan:
     name: axe-core-scan
     runs-on: ubuntu-latest
     outputs:
@@ -20,16 +20,11 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '12.x'
+      - run: echo ${{ matrix}}
   job2:
-    needs: axe-core-scan
+    needs: axe-scan
     runs-on: ubuntu-latest
     strategy:
-      matrix: ${{fromJson(needs.axe-core-scan.outputs.matrix)}}
+      matrix: ${{fromJson(needs.axe-scan.outputs.matrix)}}
     steps:
     - run: echo ${{ matrix}}
-       
-          
-        
-        
-   
-  
