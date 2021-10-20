@@ -1,0 +1,19 @@
+name: axe-core scan for a page
+on:
+  worklfow_dispatch:
+jobs:
+  axe-core-scan:
+    name: axe-core-scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: setup npm
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12.x'
+        run: |
+        npm install @axe-core/cli -g
+        axe https://www.kwalitywalls.in/home.html --save kwalitywalls-in-site.json
+        
+   
+  
