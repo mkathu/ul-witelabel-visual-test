@@ -5,8 +5,6 @@ jobs:
   axe-scan:
     name: axe-core-scan
     runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.budget.outputs.matrix }}
     steps:
       - name: setup npm
         uses: actions/checkout@v2
@@ -21,10 +19,13 @@ jobs:
         with:
           node-version: '12.x'
       - run: echo ${{needs.axe-scan.outputs.matrix.ci}}
+    outputs:
+      matrix: ${{ steps.budget.outputs.matrix }}
+     
   job2:
     needs: axe-scan
     runs-on: ubuntu-latest
     strategy:
       matrix: ${{fromJson(needs.axe-scan.outputs.matrix)}}
     steps:
-    - run: echo ${{ matrix}}
+    - run: echo ${{ matrix.ci}}
