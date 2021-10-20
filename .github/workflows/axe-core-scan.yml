@@ -13,7 +13,7 @@ jobs:
           node-version: '12.x'
       - run: |
           npm install @axe-core/cli -g
-          axe https://www.magnumicecream.com/br/home.html 
+          axe https://www.magnumicecream.com/br/home.html,https://www.kwalitywalls.in/home.html,https://www.tresemme.com/in/home.html 
           
         
         
