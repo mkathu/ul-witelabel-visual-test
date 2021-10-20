@@ -5,22 +5,29 @@ jobs:
   axe-core-scan:
     name: axe-core-scan
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - name: setup npm
         uses: actions/checkout@v2
       - name: Read .json
-        id: budget
         uses: juliangruber/read-file-action@v1
+        id: budget
         with:
-          path: .github/workflows/budget.json
+          path: .github/workflows/dev1/whitelabel-lighthouse-mobile.json
       - name: Echo json
-        run: echo "${{ steps.budget.outputs.content }}"
+        run: echo "${{ steps.budget.outputs.matrix }}"
       - uses: actions/setup-node@v2
         with:
           node-version: '12.x'
-      - run: |
-          npm install @axe-core/cli -g
-          axe https://www.magnumicecream.com/br/home.html,https://www.wallsicecream.com/uk/home.html
+  job2:
+    needs: axe-core-scan
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{fromJson(needs.axe-core-scan.outputs.matrix)}}
+    steps:
+    - run: echo ${{ matrix.ci }}
+       
           
         
         
