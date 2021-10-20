@@ -8,10 +8,18 @@ jobs:
     steps:
       - name: setup npm
         uses: actions/checkout@v2
+      - name: Read package.json
+        id: package
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./package.json
+      - name: Echo package.json
+        run: echo "${{ steps.package.outputs.content }}"
       - uses: actions/setup-node@v2
         with:
           node-version: '12.x'
       - run: |
+          cat 
           npm install @axe-core/cli -g
           axe https://www.magnumicecream.com/br/home.html,https://www.wallsicecream.com/uk/home.html
           
