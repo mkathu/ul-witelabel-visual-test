@@ -26,7 +26,7 @@ jobs:
     strategy:
       matrix: ${{fromJson(needs.axe-core-scan.outputs.matrix)}}
     steps:
-    - run: echo ${{ matrix.ci }}
+    - run: echo ${{ matrix}}
        
           
         
