@@ -6,7 +6,7 @@ jobs:
     name: axe-core-scan
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      matrix: ${{ steps.budget.outputs.matrix }}
     steps:
       - name: setup npm
         uses: actions/checkout@v2
