@@ -31,11 +31,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: set-matrix
     strategy:
-      matrix: ${{ fromJson(needs.set-matrix.outputs.matrix-combinations) }}
+      matrix: 
+        #${{ fromJson(needs.set-matrix.outputs.matrix-combinations) }}
+        include:
+          - url: "https://www.magnumicecream.com/us/en/home.html"
+          - url: "https://www.magnumicecream.com/br/home.html"
     steps:
       - name: setup npm
         uses: actions/checkout@v2
       - run: |
-          echo ${{github.job_id}}
-          #npm install @axe-core/cli -g
-          #axe ${{matrix}} --load-delay=5000
+          npm install @axe-core/cli -g
+          axe ${{matrix.url}} --load-delay=5000
