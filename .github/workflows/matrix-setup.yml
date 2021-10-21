@@ -36,4 +36,5 @@ jobs:
       - name: setup npm
         uses: actions/checkout@v2
       - run: |
-          echo ${{matrix.url}}
+          npm install @axe-core/cli -g
+          axe ${{matrix}} --load-delay=5000
