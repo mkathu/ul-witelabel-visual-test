@@ -11,7 +11,7 @@ jobs:
         uses: juliangruber/read-file-action@v1
         id: budget
         with:
-          path: .github/workflows/dev1/whitelabel-lighthouse-mobile.json
+          path: .github/workflows/test-axe-core-url.json
     outputs:
           json_value: ${{ steps.budget.outputs.content }}
   set-matrix: 
