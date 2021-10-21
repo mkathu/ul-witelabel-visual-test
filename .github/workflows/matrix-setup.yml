@@ -23,7 +23,7 @@ jobs:
       - name: Setup matrix combinations
         id: setup-matrix-combinations
         run: |
-          echo ::set-output name=matrix-combinations::toJSON(${{ needs.read-json.outputs.json_value }})
+          echo ::set-output name=matrix-combinations::${{ needs.read-json.outputs.json_value }}
     outputs:
           matrix-combinations: ${{ steps.setup-matrix-combinations.outputs.matrix-combinations }}
           
