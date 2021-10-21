@@ -36,4 +36,4 @@ jobs:
       - name: setup npm
         uses: actions/checkout@v2
       - run: |
-          echo ${{matrix}}
+          echo ${{matrix.url[0]}}
