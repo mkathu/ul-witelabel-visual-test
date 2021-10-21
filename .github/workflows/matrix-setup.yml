@@ -36,6 +36,6 @@ jobs:
       - name: setup npm
         uses: actions/checkout@v2
       - run: |
-          echo ${{github.job_id}}
+          echo ${{github.job}}
           #npm install @axe-core/cli -g
           #axe ${{matrix}} --load-delay=5000
