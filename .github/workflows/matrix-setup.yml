@@ -40,7 +40,7 @@ jobs:
         uses: actions/checkout@v2
       - run: |
           npm install @axe-core/cli -g
-          axe ${{matrix.url}} --load-delay=10000
+          axe --stdout ${{matrix.url}}| jq ".[0].violations" --load-delay=10000
           
       - name: Send Slack Notification
         uses: rtCamp/action-slack-notify@v2
