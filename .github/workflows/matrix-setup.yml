@@ -33,4 +33,4 @@ jobs:
       - name: setup npm
         uses: actions/checkout@v2
       - run: |
-          echo ${{ needs.set-matrix.outputs.matrix-combinations}}
+          echo ${{ needs.set-matrix.outputs.matrix-combinations.include.url}}
