@@ -47,7 +47,7 @@ jobs:
         if: always()
         env:
           SLACK_CHANNEL: general
-          SLACK_COLOR: ${{ job.status }}
+          #SLACK_COLOR: ${{ job.status }}
           SLACK_ICON: https://a.slack-edge.com/production-standard-emoji-assets/13.0/google-medium/1f9d1-200d-1f9af@2x.png
           SLACK_MESSAGE: Click on the ACTIONS URL to check the complete status and also to get the accessibility report for page ${{matrix.url}}
           SLACK_TITLE: Accessibility report of Whitelabel site
