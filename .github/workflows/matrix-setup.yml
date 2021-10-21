@@ -32,6 +32,7 @@ jobs:
     needs: set-matrix
     strategy:
       matrix: ${{ fromJson(needs.set-matrix.outputs.matrix-combinations) }}
+    continue-on-error: true
     steps:
       - name: setup npm
         uses: actions/checkout@v2
