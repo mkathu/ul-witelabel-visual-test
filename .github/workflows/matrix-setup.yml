@@ -23,7 +23,7 @@ jobs:
       - name: Setup matrix combinations
         id: setup-matrix-combinations
         run: |
-          echo ::set-output name=matrix-combinations::${{ needs.read-json.outputs.json_value }}
+          echo ::set-output name=matrix-combinations::{\"include\":[${{ needs.read-json.outputs.json_value }}]}
     outputs:
           matrix-combinations: ${{ steps.setup-matrix-combinations.outputs.matrix-combinations }}
           
@@ -32,7 +32,7 @@ jobs:
     needs: set-matrix
     strategy:
       matrix: 
-        #${{ fromJson(needs.set-matrix.outputs.matrix-combinations) }}
+        #${{ fromJson(toJSON(needs.set-matrix.outputs.matrix-combinations)) }}
         include:
           - url: "https://www.magnumicecream.com/us/en/home.html"
           - url: "https://www.magnumicecream.com/br/home.html"
