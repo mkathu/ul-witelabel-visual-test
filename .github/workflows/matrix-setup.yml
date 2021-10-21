@@ -29,8 +29,10 @@ jobs:
   matrix-job:
     runs-on: ubuntu-latest
     needs: set-matrix
+    strategy:
+      matrix: ${{ fromJson(needs.setup-matrix.outputs.matrix-combinations) }}
     steps:
       - name: setup npm
         uses: actions/checkout@v2
       - run: |
-          echo ${{ needs.set-matrix.outputs.matrix-combinations.url[0]}}
+          echo ${{matrix.url}}
