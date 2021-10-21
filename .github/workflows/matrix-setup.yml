@@ -38,3 +38,15 @@ jobs:
       - run: |
           npm install @axe-core/cli -g
           axe ${{matrix.url}} --load-delay=5000
+          
+      - name: Send Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        if: always()
+        env:
+          SLACK_CHANNEL: general
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_ICON: https://a.slack-edge.com/production-standard-emoji-assets/13.0/google-medium/1f9d1-200d-1f9af@2x.png
+          SLACK_MESSAGE: Click on the ACTIONS URL to check the complete status and also to get the accessibility report
+          SLACK_TITLE: Accessibility report of Whitelabel site
+          SLACK_USERNAME: mkathu
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
