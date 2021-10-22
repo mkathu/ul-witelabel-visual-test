@@ -39,12 +39,14 @@ jobs:
       - name: setup npm
         uses: actions/checkout@v2
       - run: |
+          filename:  magnum-$(date +%Y%m%d%H%M).json
+          echo ${{filename}}
           npm install @axe-core/cli -g
-          axe ${{matrix.url}} --load-delay=10000 --tags wcag21aaa --save magnum-$(date +%Y%m%d%H%M).json
+          axe ${{matrix.url}} --load-delay=10000 --tags wcag21aaa --save  ${{filename}
       - name: archive the result
         uses: actions/upload-artifact@v2 
         with:
-          name: magnum-$(date +%Y%m%d%H%M) report
+          name: save-report
           path: /home/runner/work/ul-witelabel-visual-test/ul-witelabel-visual-test/*.json
           
       - name: Send Slack Notification
