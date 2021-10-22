@@ -27,7 +27,7 @@ jobs:
     outputs:
           matrix-combinations: ${{ steps.setup-matrix-combinations.outputs.matrix-combinations }}
           
-  matrix-job:
+  axe-scan-job:
     runs-on: ubuntu-latest
     needs: set-matrix
     strategy:
@@ -40,13 +40,17 @@ jobs:
         uses: actions/checkout@v2
       - run: |
           npm install @axe-core/cli -g
-          axe ${{matrix.url}} --load-delay=10000 --tags wcag21aaa --save magnum-$(date +%Y%m%d%H%M).json
+          axe ${{matrix.url}} --load-delay=10000 --tags wcag21aaa --save whitelabel-$(date +%Y%m%d%H%M).json
       - name: archive the result
         uses: actions/upload-artifact@v2 
         with:
           name: save-report
           path: /home/runner/work/ul-witelabel-visual-test/ul-witelabel-visual-test/*.json
-          
+     
+  slack-notify:
+    runs-on: ubuntu-latest
+    needs: axe-scan-job 
+    steps:
       - name: Send Slack Notification
         uses: rtCamp/action-slack-notify@v2
         if: always()
