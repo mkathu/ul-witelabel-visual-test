@@ -1,4 +1,4 @@
-name: trial
+name: axe-scan-whitelabel
 on:
   workflow_dispatch:
 jobs:
@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: setup npm
         uses: actions/checkout@v2
-      - name: Read .json
+      - name: Read .json with urls
         uses: juliangruber/read-file-action@v1
         id: budget
         with:
@@ -40,7 +40,7 @@ jobs:
         uses: actions/checkout@v2
       - run: |
           npm install @axe-core/cli -g
-          axe ${{matrix.url}} --load-delay=10000
+          axe ${{matrix.url}} --load-delay=10000 --tags wcag21aaa --save ${{matrix.url}}.json
           
       - name: Send Slack Notification
         uses: rtCamp/action-slack-notify@v2
