@@ -40,7 +40,12 @@ jobs:
         uses: actions/checkout@v2
       - run: |
           npm install @axe-core/cli -g
-          axe ${{matrix.url}} --load-delay=10000 --tags wcag21aaa --save magnum-$(date +'%Y-%m-%d').json
+          axe ${{matrix.url}} --load-delay=10000 --tags wcag21aaa --save magnum-$(date +%Y%m%d%H%M).json
+      - name: archive the result
+        uses: actions/upload-artifact@v2 
+        with:
+          name: magnum-$(date +%Y%m%d%H%M) report
+          path: /home/runner/work/ul-witelabel-visual-test/ul-witelabel-visual-test/*.json
           
       - name: Send Slack Notification
         uses: rtCamp/action-slack-notify@v2
