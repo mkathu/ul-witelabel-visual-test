@@ -4,6 +4,7 @@ on:
 env:
   STANDARD_TO_CHECK: wcag2a,wcag2aa,wcga2aaa,wcag21a,wcag21aa,wcga21aaa
   PAGE_LOAD_WAIT_TIME: 5000
+  FILE_TO_READ: whitelabel-axe-url
 jobs:
   read-json:
     runs-on: ubuntu-latest
@@ -14,7 +15,7 @@ jobs:
         uses: juliangruber/read-file-action@v1
         id: budget
         with:
-          path: .github/workflows/test-axe-core-url.json
+          path: .github/workflows/${{ secrets.ENVIRONMENT }}/${{env.FILE_TO_READ}}.json
     outputs:
           json_value: ${{toJSON(steps.budget.outputs.content)}}
   set-matrix: 
