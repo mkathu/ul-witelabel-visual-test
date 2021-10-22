@@ -39,10 +39,8 @@ jobs:
       - name: setup npm
         uses: actions/checkout@v2
       - run: |
-          filename:  magnum-$(date +%Y%m%d%H%M).json
-          echo ${{filename}}
           npm install @axe-core/cli -g
-          axe ${{matrix.url}} --load-delay=10000 --tags wcag21aaa --save  ${{filename}
+          axe ${{matrix.url}} --load-delay=10000 --tags wcag21aaa --save magnum-$(date +%Y%m%d%H%M).json
       - name: archive the result
         uses: actions/upload-artifact@v2 
         with:
