@@ -3,7 +3,6 @@ on:
   workflow_dispatch:
 env:
   STANDARD_TO_CHECK: wcag2a,wcag2aa,wcga2aaa,wcag21a,wcag21aa,wcga21aaa
-  PARALLEL_COUNT: 2
   PAGE_LOAD_WAIT_TIME: 5000
 jobs:
   read-json:
