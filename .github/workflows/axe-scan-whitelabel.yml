@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: set-matrix
     strategy:
-      max-parallel: ${{env.PARALLEL_COUNT}}
+      max-parallel: ${{ env.PARALLEL_COUNT }}
       matrix: ${{ fromJson(needs.set-matrix.outputs.matrix-combinations) }}
     continue-on-error: true
   
