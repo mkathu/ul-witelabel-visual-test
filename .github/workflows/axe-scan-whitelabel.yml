@@ -2,7 +2,7 @@ name: axe-scan-whitelabel
 on:
   workflow_dispatch:
 env:
-  STANDARD_TO_CHECK: wcga21aa
+  STANDARD_TO_CHECK: wcga21aa,wcag21aa,wcag21a
 jobs:
   read-json:
     runs-on: ubuntu-latest
