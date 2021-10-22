@@ -1,6 +1,8 @@
 name: axe-scan-whitelabel
 on:
   workflow_dispatch:
+env:
+  STANDARD_TO_CHECK: wcga21aa
 jobs:
   read-json:
     runs-on: ubuntu-latest
@@ -40,7 +42,7 @@ jobs:
         uses: actions/checkout@v2
       - run: |
           npm install @axe-core/cli -g
-          axe ${{matrix.url}} --load-delay=10000 --tags wcag21aaa --save whitelabel-$(date +%Y%m%d%H%M).json
+          axe ${{matrix.url}} --load-delay=10000 --tags ${{env.STANDARD_TO_CHECK}} --save whitelabel-$(date +%Y%m%d%H%M).json
       - name: archive the result
         uses: actions/upload-artifact@v2 
         with:
