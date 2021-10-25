@@ -1,10 +1,11 @@
 name: Get program ID
-on: [workflow_dispatch]
+on: 
+  workflow_dispatch:
 jobs:
   get-progam-id:
     name: get id
     runs-on: ubuntu-latest
     steps:
       - name: get id
-        runs: |
+        run: |
           curl GET https://cloudmanager.adobe.io/api/programs -H "x-gw-ims-org-idrequired:F9D3ACB0580E2B510A495DC5@AdobeOrg"
