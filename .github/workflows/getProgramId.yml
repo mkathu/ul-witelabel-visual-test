@@ -1,6 +1,7 @@
 name: Get program ID
 on: 
   workflow_dispatch:
+  push:
 jobs:
   get-progam-id:
     name: get id
