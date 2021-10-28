@@ -7,8 +7,10 @@
         "budget": 5000
       }
     ],
-    "score": {
+    "score": [
+      {
       "performance": 90
-    }
+      }
+    ]
   }
 ]
