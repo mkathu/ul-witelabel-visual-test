@@ -1,0 +1,9 @@
+name: check multiple url
+on: [push]
+jobs:
+  dummy:
+    name: check axe for many urls
+    runs-on: ubuntu-latest
+    run: |
+      npm install @axe-core/cli -g
+      axe https://www.magnumicecream.com/br/home.html,https://www.magnumicecream.com/br/produtos.html --tags wcag21a,wcag21aa,wcag21aaa
