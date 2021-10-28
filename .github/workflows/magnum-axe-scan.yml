@@ -5,6 +5,7 @@ env:
   STANDARD_TO_CHECK: wcag2a,wcag2aa,wcga2aaa,wcag21a,wcag21aa,wcga21aaa
   PAGE_LOAD_WAIT_TIME: 5000
   FILE_TO_READ: magnum-axe
+  URLS: https://www.magnumicecream.com/br/home.html, https://www.magnumicecream.com/br/sitemap.html, https://www.magnumicecream.com/br/countryselector.html, https://www.magnumicecream.com/br/aboutus.html, https://www.magnumicecream.com/br/search.html, https://www.magnumicecream.com/br/campaigns/magnum-amendoas-vegano.html, https://www.magnumicecream.com/br/campaigns/magnum-pote.html, https://www.magnumicecream.com/br/campaigns/magnum-oversized-towels.html, https://www.magnumicecream.com/br/produtos.html, https://www.magnumicecream.com/br/produtos/classico.html, https://www.magnumicecream.com/br/produtos/mini-magnum.html, https://www.magnumicecream.com/br/produtos/mais-magnum.html, https://www.magnumicecream.com/br/terms-and-conditions.html, https://www.magnumicecream.com/br/tubs-carousel.html, https://www.magnumicecream.com/br/classics-carousel-new.html, https://www.magnumicecream.com/br/double-carousel-new.html, https://www.magnumicecream.com/br/secure/contato.html, https://www.magnumicecream.com/br/secure/signup.html, https://www.magnumicecream.com/br/secure/signup1.html, https://www.magnumicecream.com/br/preference-center.html, https://www.magnumicecream.com/br/preference-center/preference-optin.html, https://www.magnumicecream.com/br/preference-center/no-token.html, https://www.magnumicecream.com/br/perguntas-mais-frequentes.html, https://www.magnumicecream.com/br/SitespeedTestpage/launch-test.html, https://www.magnumicecream.com/br/painel.html, https://www.magnumicecream.com/br/artigos.html, https://www.magnumicecream.com/br/artigos/food.html, https://www.magnumicecream.com/br/artigos/food/bean-to-bite.html, https://www.magnumicecream.com/br/artigos/food/mindful-eating-alimentacao-equilibrada.html, https://www.magnumicecream.com/br/artigos/food/mindful-eating-comer-com-atencao-plena.html
 jobs:
   read-json:
     runs-on: ubuntu-latest
@@ -27,9 +28,8 @@ jobs:
       - name: setup npm
         uses: actions/checkout@v2
       - run: |
-          echo ${{needs.read-json.outputs.json_value}}
           npm install @axe-core/cli -g
-          axe ${{needs.read-json.outputs.json_value}} --load-delay=${{env.PAGE_LOAD_WAIT_TIME}} --tags ${{env.STANDARD_TO_CHECK}} --save magnum-$(date +%Y%m%d%H%M).json
+          axe ${{${{env.URLS}} --load-delay=${{env.PAGE_LOAD_WAIT_TIME}} --tags ${{env.STANDARD_TO_CHECK}} --save magnum-$(date +%Y%m%d%H%M).json
       - name: archive the result
         uses: actions/upload-artifact@v2 
         with:
