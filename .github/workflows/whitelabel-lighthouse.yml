@@ -10,7 +10,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v8
         with:
           configPath: '.github/workflows/${{ secrets.ENVIRONMENT }}/whitelabel-lighthouse-desktop.json'
-          budgetPath: .github/workflows/budget.json
+          budgetPath: '.github/workflows/budget.json'
           temporaryPublicStorage: true
           
       - uses: actions/checkout@v2
@@ -19,7 +19,7 @@ jobs:
         if: always()
         with:
           configPath: '.github/workflows/${{ secrets.ENVIRONMENT }}/whitelabel-lighthouse-mobile.json'
-          budgetPath: .github/workflows/mob-budget.json
+          budgetPath: '.github/workflows/mob-budget.json'
           temporaryPublicStorage: true
       - name: Send Slack Notification
         uses: rtCamp/action-slack-notify@v2
