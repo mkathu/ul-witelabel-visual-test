@@ -27,8 +27,9 @@ jobs:
       - name: setup npm
         uses: actions/checkout@v2
       - run: |
+          echo ${{needs.read-json.outputs.json_value}}
           npm install @axe-core/cli -g
-          axe ${{needs.read-json.outputs.json_value}}--load-delay=${{env.PAGE_LOAD_WAIT_TIME}} --tags ${{env.STANDARD_TO_CHECK}} --save whitelabel-$(date +%Y%m%d%H%M).json
+          axe ${{needs.read-json.outputs.json_value}} --load-delay=${{env.PAGE_LOAD_WAIT_TIME}} --tags ${{env.STANDARD_TO_CHECK}} --save magnum-$(date +%Y%m%d%H%M).json
       - name: archive the result
         uses: actions/upload-artifact@v2 
         with:
