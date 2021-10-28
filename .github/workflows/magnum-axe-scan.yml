@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Read .json with urls
         id: budget
-        run: echo "::set-output name=json_value::$cat(.github/workflows/${{ secrets.ENVIRONMENT }}/${{env.FILE_TO_READ}}.txt)
+        run: echo "::set-output name=json_value::$cat(.github/workflows/${{ secrets.ENVIRONMENT }}/${{env.FILE_TO_READ}}.txt)"
           
   axe-scan-job:
     runs-on: ubuntu-latest
