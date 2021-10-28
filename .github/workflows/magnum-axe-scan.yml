@@ -1,0 +1,51 @@
+name: magnum-axe-scan-whitelabel
+on:
+  workflow_dispatch:
+env:
+  STANDARD_TO_CHECK: wcag2a,wcag2aa,wcga2aaa,wcag21a,wcag21aa,wcga21aaa
+  PAGE_LOAD_WAIT_TIME: 5000
+  FILE_TO_READ: whitelabel-axe-url
+jobs:
+  read-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: setup npm
+        uses: actions/checkout@v2
+      - name: Read .json with urls
+        uses: juliangruber/read-file-action@v1
+        id: budget
+        with:
+          path: .github/workflows/${{ secrets.ENVIRONMENT }}/${{env.FILE_TO_READ}}.json
+    outputs:
+          json_value: ${{toJSON(steps.budget.outputs.content)}}
+          
+  axe-scan-job:
+    runs-on: ubuntu-latest
+    needs: read-json
+    continue-on-error: true
+    steps:
+      - name: setup npm
+        uses: actions/checkout@v2
+      - run: |
+          npm install @axe-core/cli -g
+          axe ${{needs.read-json.outputs.json_value}} --load-delay=${{env.PAGE_LOAD_WAIT_TIME}} --tags ${{env.STANDARD_TO_CHECK}} --save whitelabel-$(date +%Y%m%d%H%M).json
+      - name: archive the result
+        uses: actions/upload-artifact@v2 
+        with:
+          name: save-report
+          path: /home/runner/work/ul-witelabel-visual-test/ul-witelabel-visual-test/*.json
+     
+  slack-notify:
+    runs-on: ubuntu-latest
+    needs: axe-scan-job 
+    steps:
+      - name: Send Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        if: always()
+        env:
+          SLACK_CHANNEL: general
+          SLACK_ICON: https://a.slack-edge.com/production-standard-emoji-assets/13.0/google-medium/1f9d1-200d-1f9af@2x.png
+          SLACK_MESSAGE: Click on the ACTIONS URL to check the complete status and also to get the accessibility report for page ${{matrix.url}}
+          SLACK_TITLE: Accessibility report of Whitelabel site
+          SLACK_USERNAME: mkathu
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
