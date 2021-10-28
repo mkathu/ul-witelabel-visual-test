@@ -7,7 +7,7 @@ jobs:
     steps:
       - run: |
           npm install @axe-core/cli -g
-          axe https://www.magnumicecream.com/br/home.html,https://www.magnumicecream.com/br/produtos.html --tags wcag2a,wcag21a,wcag2aa,wcag21aa,wcag2aaa,wcag21aaa --save axe-multiple-scan-$(date +%Y%m%d%H%M).json
+          axe https://www.magnumicecream.com/br/home.html, https://www.magnumicecream.com/br/produtos.html --tags wcag2a,wcag21a,wcag2aa,wcag21aa,wcag2aaa,wcag21aaa --save axe-multiple-scan-$(date +%Y%m%d%H%M).json
       - name: archive the result
         uses: actions/upload-artifact@v2 
         with:
