@@ -9,4 +9,4 @@ jobs:
     steps:
       - name: get id
         run: |
-          curl GET https://cloudmanager.adobe.io/api/programs -H "x-gw-ims-org-id:F9D3ACB0580E2B510A495DC5@AdobeOrg" -H "Authorization:7d5877ef-d4b5-47c9-b586-3115d1a0d009@techacct.adobe.com" -H "x-api-key:907ea9b18f1c449e88938755ee4e4e38"
+          curl GET https://cloudmanager.adobe.io/api/programs -H "x-gw-ims-org-id:F9D3ACB0580E2B510A495DC5@AdobeOrg" -H "Authorization:E61A20725EE9EDBC0A495C71@techacct.adobe.com" -H "x-api-key:907ea9b18f1c449e88938755ee4e4e38"
