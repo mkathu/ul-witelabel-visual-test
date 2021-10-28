@@ -13,9 +13,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Read .json with urls
         run: |
-          export var=cat .github/workflows/${{ secrets.ENVIRONMENT }}/${{env.FILE_TO_READ}}.txt
           npm install @axe-core/cli -g
-          axe ${{var}} --load-delay=${{env.PAGE_LOAD_WAIT_TIME}} --tags ${{env.STANDARD_TO_CHECK}} --save magnum-$(date +%Y%m%d%H%M).json
+          axe ${{cat .github/workflows/${{ secrets.ENVIRONMENT }}/${{env.FILE_TO_READ}}.txt}} --load-delay=${{env.PAGE_LOAD_WAIT_TIME}} --tags ${{env.STANDARD_TO_CHECK}} --save magnum-$(date +%Y%m%d%H%M).json
           
       - name: archive the result
         uses: actions/upload-artifact@v2 
