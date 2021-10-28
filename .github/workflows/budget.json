@@ -6,6 +6,9 @@
         "metric": "interactive",
         "budget": 5000
       }
-    ]
+    ],
+    "score": {
+      "performance": 90
+    }
   }
 ]
