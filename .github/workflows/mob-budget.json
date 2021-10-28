@@ -18,6 +18,9 @@
         "metric": "cumulative-layout-shift",
         "budget": 0.8
       }
-     ]
+     ],
+    "score": {
+      "performance": 90
+    }
   }
 ]
