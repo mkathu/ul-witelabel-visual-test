@@ -17,7 +17,7 @@ jobs:
       - name: run axe scan on urls
         run: |
           npm install @axe-core/cli -g
-          axe ${{steps.pickUrls.outputs.urls}} --load-delay=${{env.PAGE_LOAD_WAIT_TIME}} --tags ${{env.STANDARD_TO_CHECK}} --save magnum-$(date +%Y%m%d%H%M).json
+          axe ${{steps.pickUrls.outputs.urls}} --load-delay=${{env.PAGE_LOAD_WAIT_TIME}} --tags=${{env.STANDARD_TO_CHECK}} --save magnum-$(date +%Y%m%d%H%M).json
           
       - name: archive the result
         uses: actions/upload-artifact@v2 
