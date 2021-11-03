@@ -16,7 +16,7 @@ jobs:
         run: echo ::set-output name=urls::$(cat .github/workflows/${{ secrets.ENVIRONMENT }}/${{env.FILE_TO_READ}}.txt) 
       - name: run axe scan on urls
         run: |
-          npm install @axe-core/cli@4.3.0
+          npm i @axe-core/cli@4.3.0
           axe ${{steps.pickUrls.outputs.urls}} --browser firefox --verbose --load-delay=${{env.PAGE_LOAD_WAIT_TIME}} --tags ${{env.STANDARD_TO_CHECK}} --save magnum-$(date +%Y%m%d%H%M).json
           
       - name: archive the result
