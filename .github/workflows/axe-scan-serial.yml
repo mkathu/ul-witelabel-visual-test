@@ -16,7 +16,8 @@ jobs:
         run: echo ::set-output name=urls::$(cat .github/workflows/${{ secrets.ENVIRONMENT }}/${{env.FILE_TO_READ}}.txt) 
       - name: run axe scan on urls
         run: |
-          google-chrome --version
+          wget http://archive.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-browser_90.0.4430.72-0ubuntu0.16.04.1_amd64.deb
+          apt install ./chromium-browser_90.0.4430.72-0ubuntu0.16.04.1_amd64.deb
           npm install @axe-core/cli@4.3.2-alpha.209 -g
           axe ${{steps.pickUrls.outputs.urls}} --browser firefox --show-errors --load-delay=${{env.PAGE_LOAD_WAIT_TIME}} --tags ${{env.STANDARD_TO_CHECK}} --save magnum-$(date +%Y%m%d%H%M).json
           
