@@ -19,7 +19,7 @@ jobs:
           wget http://archive.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-browser_90.0.4430.72-0ubuntu0.16.04.1_amd64.deb
           sudo apt -f install /home/runner/work/ul-witelabel-visual-test/ul-witelabel-visual-test/chromium-browser_90.0.4430.72-0ubuntu0.16.04.1_amd64.deb
           npm install @axe-core/cli@4.3.2-alpha.209 -g
-          axe ${{steps.pickUrls.outputs.urls}} --browser firefox --show-errors --load-delay=${{env.PAGE_LOAD_WAIT_TIME}} --tags ${{env.STANDARD_TO_CHECK}} --save magnum-$(date +%Y%m%d%H%M).json
+          axe ${{steps.pickUrls.outputs.urls}} --show-errors --load-delay=${{env.PAGE_LOAD_WAIT_TIME}} --tags ${{env.STANDARD_TO_CHECK}} --save magnum-$(date +%Y%m%d%H%M).json
           
       - name: archive the result
         uses: actions/upload-artifact@v2 
