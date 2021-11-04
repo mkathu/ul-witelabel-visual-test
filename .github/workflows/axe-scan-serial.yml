@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v2 
         with:
           name: save-report
-          path: /*/*.json
+          path: ${{ github.workspace }}/*.json
      
   slack-notify:
     runs-on: ubuntu-latest
