@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Read file with urls
         id: pickUrls
-        run: echo ::set-output name=urls::$(cat .github/workflows/${{ github.event.client_payload.environment }}/${{env.FILE_TO_READ}}.txt) 
+        run: echo ::set-output name=urls::$(cat .github/workflows/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.file-to-read }}.txt) 
       - name: run axe scan on urls
         run: |
           sudo apt-get update
