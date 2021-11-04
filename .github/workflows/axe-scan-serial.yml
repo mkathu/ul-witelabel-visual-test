@@ -1,10 +1,11 @@
 name: axe-scan-whitelabel-sequential
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types: [deploy]
 env:
   STANDARD_TO_CHECK: wcag2a,wcag2aa,wcga2aaa,wcag21a,wcag21aa,wcga21aaa
   PAGE_LOAD_WAIT_TIME: 5000
-  FILE_TO_READ: magnum-axe
 jobs:
   axe-core-scan-whitelabel:
     runs-on: ubuntu-latest
@@ -13,7 +14,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Read file with urls
         id: pickUrls
-        run: echo ::set-output name=urls::$(cat .github/workflows/${{ secrets.ENVIRONMENT }}/${{env.FILE_TO_READ}}.txt) 
+        run: echo ::set-output name=urls::$(cat .github/workflows/${{ github.event.client_payload.environment }}/${{env.FILE_TO_READ}}.txt) 
       - name: run axe scan on urls
         run: |
           sudo apt-get update
@@ -26,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v2 
         with:
           name: save-report
-          path: /home/runner/work/ul-witelabel-visual-test/ul-witelabel-visual-test/*.json
+          path: /**.json
      
   slack-notify:
     runs-on: ubuntu-latest
