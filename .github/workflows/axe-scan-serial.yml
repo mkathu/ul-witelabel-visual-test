@@ -1,6 +1,8 @@
 name: axe-scan-whitelabel-sequential
 on:
   workflow_dispatch:
+  repository_dispatch:
+     types: [deploy]
 env:
   STANDARD_TO_CHECK: wcag2a,wcag2aa,wcga2aaa,wcag21a,wcag21aa,wcga21aaa
 jobs:
