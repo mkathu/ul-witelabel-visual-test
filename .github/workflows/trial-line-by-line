@@ -1,0 +1,13 @@
+name: read line by line
+on:
+  workflow_dispatch:
+jobs:
+  read:
+    name: something
+    runs-on: ubuntu-latest
+    steps:
+      run: |
+        set input=cat ${{github.workspace}}/magnum-urls.txt
+        while IFS=, read -r -a input; do
+         printf "%s\n" "${input[0]}" "${input[1]}"
+         done < input.txt
