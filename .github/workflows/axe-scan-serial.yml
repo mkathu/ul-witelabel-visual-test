@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v2 
         with:
           name: save-report
-          path: /home/runner/work/ul-witelabel-visual-test/ul-witelabel-visual-test/*.json
+          path: /*/*.json
      
   slack-notify:
     runs-on: ubuntu-latest
