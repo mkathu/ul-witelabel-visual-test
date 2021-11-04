@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: something
-        run: pwd 
+        run: cat /home/runner/work/ul-witelabel-visual-test/ul-witelabel-visual-test/.github/workflows/magnum-urls.txt
            #while IFS=, read -r -a input; do
            #printf "%s\n" "${input[0]}" "${input[1]}"
           #done < input.txt
