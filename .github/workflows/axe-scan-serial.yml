@@ -1,10 +1,19 @@
+# This workflow is used to scan the whitelabel site for accesibility issues as part of CI/CD
 name: axe-scan-whitelabel-sequential
 on:
+  #This workflow can be triggered as part of manual trigger or as a repository dispatch event with event name as "deploy"
   workflow_dispatch:
   repository_dispatch:
      types: [deploy]
+     
+     #Configured the scaning standard to be followed.
 env:
   STANDARD_TO_CHECK: wcag2a,wcag2aa,wcga2aaa,wcag21a,wcag21aa,wcga21aaa
+  #Below job does the following:
+  # 1. Read the txt file with urls
+  # 2. Scan the pages as per configured standards
+  # 3. Archive the result
+  # 4. Send slack notification
 jobs:
   axe-core-scan-whitelabel:
     runs-on: ubuntu-latest
