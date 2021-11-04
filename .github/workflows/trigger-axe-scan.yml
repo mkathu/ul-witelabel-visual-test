@@ -13,4 +13,4 @@ jobs:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           repository: mkathu/ul-witelabel-visual-test
           event-type: deploy
-          client-payload: '{"environment": "dev1","file-to-read":"magnum-urls","load-timr":"5000"}'
+          client-payload: '{"environment": "dev1","file-to-read":"magnum-urls","load-time":"5000"}'
