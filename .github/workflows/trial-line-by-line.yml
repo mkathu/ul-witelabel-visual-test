@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo cat ${{github.workspace}}/magnum-urls.txt
+          set input = cat ${{github.workspace}}/.github/workflows/magnum-urls.txt
           while IFS=, read -r -a input; do
            printf "%s\n" "${input[0]}" "${input[1]}"
           done < input.txt
