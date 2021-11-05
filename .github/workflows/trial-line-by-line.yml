@@ -11,6 +11,4 @@ jobs:
       - name: something
         run: |
           echo ::set-output name=urls::$(cat .github/workflows/magnum-urls.txt) 
-          while IFS=, read -r -a urls; do
-           printf "%s\n" "${urls[0]}"
-          done
+          axe $urls
