@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: something
-        run: find / *.txt | grep magnum-urls.txt
+        run: ls -altr | grep magnum-urls.txt
            #while IFS=, read -r -a input; do
            #printf "%s\n" "${input[0]}" "${input[1]}"
           #done < input.txt
