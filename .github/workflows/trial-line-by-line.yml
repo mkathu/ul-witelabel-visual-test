@@ -10,5 +10,4 @@ jobs:
         uses: actions/checkout@v2
       - name: something
         run: |
-          echo ::set-output name=urls::$(cat .github/workflows/magnum-urls.txt) 
-          axe $urls
+          echo ::set-output name=urls::$(cat .github/workflows/magnum-urls.txt)
