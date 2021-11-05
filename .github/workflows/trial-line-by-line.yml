@@ -9,5 +9,8 @@ jobs:
       - name: setup npm
         uses: actions/checkout@v2
       - name: something
+        id: dunmmy
         run: |
           echo ::set-output name=urls::$(cat .github/workflows/magnum-urls.txt)
+          echo ${{steps.dummy.urls}}
+          
