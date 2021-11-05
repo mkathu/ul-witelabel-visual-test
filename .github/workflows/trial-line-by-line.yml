@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: something
-        uses: mkathu/ul-witelabel-visual-test@master
+        uses: mkathu/ul-witelabel-visual-test@main
       - run: |
           pwd
           ls -altr
