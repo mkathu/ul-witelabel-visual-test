@@ -10,9 +10,7 @@ jobs:
         uses: actions/checkout@v2
       - name: something
         run: |
-          cd .github/workflows
-          pwd
-          ls -altr
+          cat .github/workflows/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.file-to-read }}.txt
 
            #while IFS=, read -r -a input; do
            #printf "%s\n" "${input[0]}" "${input[1]}"
