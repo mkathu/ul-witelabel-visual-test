@@ -6,6 +6,8 @@ jobs:
     name: something
     runs-on: ubuntu-latest
     steps:
+      - name: setup npm
+        uses: actions/checkout@v2
       - name: something
         run: |
           cd .github/workflows
