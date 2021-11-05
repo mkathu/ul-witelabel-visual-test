@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: something
-      - run: |
+        run: |
           cd .github/workflows
           pwd
           ls -altr
