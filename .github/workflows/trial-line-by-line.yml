@@ -7,11 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: something
-        uses: mkathu/ul-witelabel-visual-test@main
       - run: |
+          cd .github/workflows
           pwd
           ls -altr
-          
+
            #while IFS=, read -r -a input; do
            #printf "%s\n" "${input[0]}" "${input[1]}"
           #done < input.txt
