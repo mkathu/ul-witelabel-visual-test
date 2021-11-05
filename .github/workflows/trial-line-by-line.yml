@@ -10,8 +10,7 @@ jobs:
         uses: actions/checkout@v2
       - name: something
         run: |
-          cat .github/workflows/magnum-urls.txt
-
-           #while IFS=, read -r -a input; do
-           #printf "%s\n" "${input[0]}" "${input[1]}"
-          #done < input.txt
+          set input=cat .github/workflows/magnum-urls.txt
+          while IFS=, read -r -a input; do
+           printf "%s\n" "${input[0]}" "${input[1]}"
+          done < input.txt
